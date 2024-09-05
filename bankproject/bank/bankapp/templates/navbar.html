@@ -1,0 +1,41 @@
+<nav class="navbar bg-primary navbar-expand-lg">
+  <div class="container">
+    <a class="text-light navbar-brand" href="#">Car & Bike blog1</a>
+
+      <form class="d-flex" action=" " role="search">
+      <input name="searchpost" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a class="text-light nav-link active" aria-current="page" href="{% url 'login' %}">Home</a>
+        </li>
+        <li class="nav-item">
+            {% if request.user.is_authenticated %}
+         <li class="nav-item">
+          <a class=" text-light nav-link active" aria-current="page" href="#">welcome{{request.user.username}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-light nav-link" href="#">Add Post</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+        <a href="{% url 'login' %}" class="text-light nav-link">Login</a>
+      </li>
+           {% endif %}
+        <li class="nav-item">
+          <a class="text-light" href="{% url 'register' %}">Register</a>
+        </li><br><br>
+        <li class="nav-item">
+          <a class="text-light" href="#">Register as Reviewer</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
